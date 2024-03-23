@@ -1,3 +1,43 @@
-[gd_scene format=3 uid="uid://y0qukb6aqsbb"]
+[gd_scene load_steps=2 format=3 uid="uid://y0qukb6aqsbb"]
 
-[node name="Game" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_n245a"]
+
+[node name="Game" type="Control"]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n245a")
+
+[node name="Game" type="Control" parent="."]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameContainer" type="SubViewportContainer" parent="Game/MarginContainer"]
+layout_mode = 2
+stretch = true
+
+[node name="GameViewport" type="SubViewport" parent="Game/MarginContainer/GameContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Game/MarginContainer/GameContainer/GameViewport"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Game/MarginContainer/GameContainer/GameViewport/Camera3D"]
