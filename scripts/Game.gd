@@ -8,7 +8,7 @@ var deltaG : float
 
 const MAPCAM_HEIGHT = 20
 
-var level := preload("res://scenes/level.tscn")
+var level := preload("res://scenes/Level.tscn")
 
 enum State {
 	EXPLORE,

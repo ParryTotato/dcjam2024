@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://do8obmhxtbv7m"]
 
-[ext_resource type="Texture2D" uid="uid://cy77tsfw0i3ji" path="res://assets/UI_Assets/Sprite_Menu_Background.jpg" id="1_6bmmo"]
+[ext_resource type="Texture2D" uid="uid://yse3jughrmqw" path="res://assets/wood_floor.jpg" id="1_1ggug"]
 
 [sub_resource type="Sky" id="Sky_wxaqg"]
 
@@ -14,8 +14,8 @@ sky = SubResource("Sky_wxaqg")
 environment = SubResource("Environment_8ae2g")
 
 [node name="Floor" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.367796, 2)
 axis = 1
-texture = ExtResource("1_6bmmo")
+texture = ExtResource("1_1ggug")
 region_enabled = true
-region_rect = Rect2(0, 0, 20000, 20000)
+region_rect = Rect2(0, 0, 8000, 8000)
