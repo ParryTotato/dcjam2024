@@ -1,5 +1,6 @@
 extends Control
 
+
 @onready var player : CharacterBody3D = $Player
 @onready var playerCam : Camera3D = get_node("%PlayerCam")
 
@@ -7,8 +8,7 @@ var deltaG : float
 
 const MAPCAM_HEIGHT = 20
 
-var Level := preload("res://scenes/level.tscn")
-var level : Level
+var level := preload("res://scenes/level.tscn")
 
 enum State {
 	EXPLORE,
@@ -39,7 +39,6 @@ func _process(delta : float):
 
 
 
-
 func restart():
 	createNewLevel()
 	
@@ -47,7 +46,7 @@ func restart():
 	#turn = Turn.PLAYER
 	
 func createNewLevel():
-	level = Level.instantiate()
+	#level = Level.instantiate()
 	
 	var startPos = level.startTile.position
 	player.position = startPos
@@ -58,10 +57,10 @@ func createNewLevel():
 
 
 func turnCam():
-	if get_parent().instantTurn:
+	#if get_parent().instantTurn:
 		instTurn()
-	else:
-		smoothTurn()
+	#else:
+		#smoothTurn()
 		
 func instTurn():
 	playerCam.rotation.y = player.rotation.y
@@ -71,13 +70,13 @@ func smoothTurn():
 	playerCam.rotation.y = lerp_angle(playerCam.rotation.y, player.rotation.y, turnSpeed)
 	
 func moveCam():
-	if get_parent().instantMove:
-		instMove()
-	else:
-		smoothMove()
+	#if get_parent().instantMove:
+	instMove()
+	#else:
+		#smoothMove()
 	
-	%MapCam.position = playerCam.position
-	%MapCam.position.y = MAPCAM_HEIGHT
+	#%MapCam.position = playerCam.position
+	#%MapCam.position.y = MAPCAM_HEIGHT
 	
 
 func instMove():

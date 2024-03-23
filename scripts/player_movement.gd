@@ -16,8 +16,10 @@ func _process(delta):
 
 func turn():
 	if Input.is_action_just_pressed("turn_left"):
+		print("left rotation")
 		rotation.y += PI/2
 	if Input.is_action_just_pressed("turn_right"):
+		print("right rotation")
 		rotation.y -= PI/2
 	
 	if rotation.y < 0:
@@ -30,21 +32,25 @@ func turn():
 
 func move():
 	var movement := Vector3.ZERO
-	if Input.is_action_just_pressed("forward") && !$RayForward.is_colliding():
+	if Input.is_action_just_pressed("move_forward") && !$RayForward.is_colliding():
+		print("forward")
 		movement = calc_forw_move()
 	
-	if Input.is_action_just_pressed("backward") && !$RayBack.is_colliding():
+	if Input.is_action_just_pressed("move_backward") && !$RayBackward.is_colliding():
+		print("backward")
 		movement = calc_forw_move()
 		movement.z = -movement.z
 		movement.x = -movement.x
 	
-	if Input.is_action_just_pressed("left") && !$RayLeft.is_colliding():
+	if Input.is_action_just_pressed("move_left") && !$RayLeft.is_colliding():
+		print("left")
 		movement = calc_forw_move()
 		var temp = movement.x
 		movement.x = movement.z
 		movement.z = -temp
 	
-	if Input.is_action_just_pressed("right") && !$RayRight.is_colliding():
+	if Input.is_action_just_pressed("move_right") && !$RayRight.is_colliding():
+		print("right")
 		movement = calc_forw_move()
 		var temp = movement.x
 		movement.x = -movement.z

@@ -1,12 +1,19 @@
 [gd_scene load_steps=2 format=3 uid="uid://cyfy57p4ioyin"]
 
-[ext_resource type="Script" path="res://scripts/Game.gd" id="1_gt0ql"]
+[ext_resource type="PackedScene" uid="uid://y0qukb6aqsbb" path="res://scenes/Game.tscn" id="2_ujldf"]
 
-[node name="Super" type="Node2D"]
-
-[node name="Game" type="Control" parent="."]
+[node name="Super" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_gt0ql")
+
+[node name="Game" parent="." instance=ExtResource("2_ujldf")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 30.0
+offset_top = 31.0
+offset_right = 1952.0
+offset_bottom = 1118.0
+grow_horizontal = 1
+grow_vertical = 1
