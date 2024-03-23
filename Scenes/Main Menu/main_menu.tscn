@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://b5bg4fgya03lg"]
 
-[ext_resource type="Script" path="res://Main Menu/Main Menu.gd" id="1_3crsc"]
-[ext_resource type="Texture2D" uid="uid://wqiy5432o5mr" path="res://UI_Assets/Sprite_Menu_Background.jpg" id="1_t0dfu"]
-[ext_resource type="Texture2D" uid="uid://cpf2oqp0gqkpf" path="res://UI_Assets/Sprite_Button_NewGame.png" id="2_v3sxy"]
-[ext_resource type="Texture2D" uid="uid://dbsteaawrkcht" path="res://UI_Assets/Sprite_Button_NewGame_Hovered.png" id="3_hhhb2"]
-[ext_resource type="Texture2D" uid="uid://c65bw3wuf42nk" path="res://UI_Assets/Sprite_Button_ExtractedHeroes.png" id="4_slmeb"]
-[ext_resource type="Texture2D" uid="uid://w42b6ygkhmuv" path="res://UI_Assets/Sprite_Button_ExtractedHeroes_Hovered.png" id="5_u17kw"]
-[ext_resource type="Texture2D" uid="uid://cgvy4pfajojuw" path="res://UI_Assets/Sprite_Button_Options.png" id="6_57kqu"]
-[ext_resource type="Texture2D" uid="uid://bce8qtlty3rw" path="res://UI_Assets/Sprite_Button_Options_Hovered.png" id="7_ioom6"]
-[ext_resource type="Texture2D" uid="uid://dqrb3iyxmuo7j" path="res://UI_Assets/Sprite_Button_Quit.png" id="8_2ek7h"]
-[ext_resource type="Texture2D" uid="uid://6ehxr4fxufok" path="res://UI_Assets/Sprite_Button_Quit_Hovered.png" id="9_00nlv"]
+[ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="1_u62gk"]
+[ext_resource type="Texture2D" uid="uid://dug3lojq1qu7g" path="res://assets/UI_Assets/Sprite_Menu_Background.jpg" id="2_ddv6j"]
+[ext_resource type="Texture2D" uid="uid://dur1imsljjma3" path="res://assets/UI_Assets/Sprite_Button_NewGame.png" id="3_ct3yv"]
+[ext_resource type="Texture2D" uid="uid://d2dikpjjpyg2d" path="res://assets/UI_Assets/Sprite_Button_NewGame_Hovered.png" id="4_x8jrw"]
+[ext_resource type="Texture2D" uid="uid://b4vm2eupgj1kk" path="res://assets/UI_Assets/Sprite_Button_ExtractedHeroes.png" id="5_mihao"]
+[ext_resource type="Texture2D" uid="uid://bvsodyq1ttxaq" path="res://assets/UI_Assets/Sprite_Button_ExtractedHeroes_Hovered.png" id="6_d3hyu"]
+[ext_resource type="Texture2D" uid="uid://bfgdwlfwvsvmk" path="res://assets/UI_Assets/Sprite_Button_Options.png" id="7_vy1aa"]
+[ext_resource type="Texture2D" uid="uid://dmuu1r0pv3773" path="res://assets/UI_Assets/Sprite_Button_Options_Hovered.png" id="8_s426i"]
+[ext_resource type="Texture2D" uid="uid://dmy4k7pt0usun" path="res://assets/UI_Assets/Sprite_Button_Quit.png" id="9_oupsm"]
+[ext_resource type="Texture2D" uid="uid://bquhwdg0i6nqv" path="res://assets/UI_Assets/Sprite_Button_Quit_Hovered.png" id="10_ucdmf"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3crsc")
+script = ExtResource("1_u62gk")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -27,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_t0dfu")
+texture = ExtResource("2_ddv6j")
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
 layout_mode = 1
@@ -54,22 +54,22 @@ theme_override_constants/separation = 20
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-texture_normal = ExtResource("2_v3sxy")
-texture_hover = ExtResource("3_hhhb2")
+texture_normal = ExtResource("3_ct3yv")
+texture_hover = ExtResource("4_x8jrw")
 
 [node name="Button_ExtractedHeroes" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-texture_normal = ExtResource("4_slmeb")
-texture_hover = ExtResource("5_u17kw")
+texture_normal = ExtResource("5_mihao")
+texture_hover = ExtResource("6_d3hyu")
 
 [node name="Button_Options" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-texture_normal = ExtResource("6_57kqu")
-texture_hover = ExtResource("7_ioom6")
+texture_normal = ExtResource("7_vy1aa")
+texture_hover = ExtResource("8_s426i")
 
 [node name="Spacer" type="Control" parent="TextureRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -81,8 +81,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-texture_normal = ExtResource("8_2ek7h")
-texture_hover = ExtResource("9_00nlv")
+texture_normal = ExtResource("9_oupsm")
+texture_hover = ExtResource("10_ucdmf")
 
 [connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Button_NewGame" to="." method="_on_button_new_game_pressed"]
 [connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Button_ExtractedHeroes" to="." method="_on_button_extracted_heroes_pressed"]
