@@ -71,7 +71,7 @@ func smoothTurn():
 	
 func moveCam():
 	#if get_parent().instantMove:
-	instMove()
+		instMove()
 	#else:
 		#smoothMove()
 	

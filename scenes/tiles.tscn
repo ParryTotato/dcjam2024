@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0fjumis3kjnv"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ehd3x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xk4hw"]
+
+[node name="Tiles" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_ehd3x")
+skeleton = NodePath("")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_xk4hw")
+skeleton = NodePath("")
