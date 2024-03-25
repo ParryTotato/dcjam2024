@@ -6,6 +6,12 @@ extends Control
 
 var deltaG : float
 
+var instantTurn := false
+var instantMove := false
+
+var turnSpeed := 10
+var moveSpeed := 10
+
 const MAPCAM_HEIGHT = 20
 
 var level := preload("res://scenes/Level.tscn")
@@ -58,22 +64,22 @@ func createNewLevel():
 
 func turnCam():
 	#if get_parent().instantTurn:
-		instTurn()
+		#instTurn()
 	#else:
-		#smoothTurn()
+		smoothTurn()
 		
 func instTurn():
 	playerCam.rotation.y = player.rotation.y
 	
 func smoothTurn():
-	var turnSpeed = deltaG * get_parent().turnSpeed
+	var turnSpeed = deltaG * turnSpeed
 	playerCam.rotation.y = lerp_angle(playerCam.rotation.y, player.rotation.y, turnSpeed)
 	
 func moveCam():
 	#if get_parent().instantMove:
-		instMove()
+		#instMove()
 	#else:
-		#smoothMove()
+		smoothMove()
 	
 	#%MapCam.position = playerCam.position
 	#%MapCam.position.y = MAPCAM_HEIGHT
@@ -83,5 +89,5 @@ func instMove():
 	playerCam.position = player.position
 	
 func smoothMove():
-	var moveSpeed = deltaG * get_parent().moveSpeed
+	var moveSpeed = deltaG * moveSpeed
 	playerCam.position = playerCam.position.lerp(player.position, moveSpeed)
