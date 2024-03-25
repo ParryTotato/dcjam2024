@@ -2,7 +2,7 @@ extends Control
 
 # Starts a new game on putton press
 func _on_button_new_game_pressed() -> void:
-	get_tree(). change_scene_to_file("res://Scenes/Levels/Level_Test3D.tscn")
+	get_tree(). change_scene_to_file("res://Scenes/Super.tscn")
 
 
 # Takes you to the Extracted Heroes Menu Page

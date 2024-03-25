@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtdmpafc5vakn"]
+
+[ext_resource type="Script" path="res://scripts/Wall.gd" id="1_2lnee"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38ho6"]
+
+[node name="Wall" type="CollisionShape3D"]
+shape = SubResource("BoxShape3D_38ho6")
+script = ExtResource("1_2lnee")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]

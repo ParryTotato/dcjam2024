@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd2xs7liqxnj8"]
+
+[ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_rjq6v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qrcnn"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_wax2q"]
+
+[node name="Player" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_rjq6v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qrcnn")
+
+[node name="RayForward" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2.2, 0)
+
+[node name="RayBackward" type="RayCast3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2.2, 0)
+
+[node name="RayLeft" type="RayCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+target_position = Vector3(0, -2.2, 0)
+
+[node name="RayRight" type="RayCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+target_position = Vector3(0, -2.2, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+omni_range = 6.905
+
+[node name="PlayerCam" type="Camera3D" parent="."]
+current = true
+fov = 100.0
+
+[node name="Sprite3D" type="Sprite3D" parent="PlayerCam"]
+texture = SubResource("MeshTexture_wax2q")
