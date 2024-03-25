@@ -3,6 +3,8 @@ extends CharacterBody3D
 @onready var game = get_parent()
 @onready var State = game.State
 
+var inst_move_speed = 2.5
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -62,13 +64,13 @@ func move():
 
 func calc_forw_move() -> Vector3:
 	if is_zero_approx(rotation.y):
-		return Vector3(0,0,-4)
+		return Vector3(0,0,(-1*inst_move_speed))
 	elif is_equal_approx(rotation.y, PI/2):
-		return Vector3(-4,0,0)
+		return Vector3((-1*inst_move_speed),0,0)
 	elif is_equal_approx(rotation.y, PI):
-		return Vector3(0,0,4)
+		return Vector3(0,0,inst_move_speed)
 	elif is_equal_approx(rotation.y, (3*PI)/2):
-		return Vector3(4,0,0)
+		return Vector3(inst_move_speed,0,0)
 	
 	return Vector3.ZERO
 
