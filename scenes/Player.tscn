@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_rjq6v"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qrcnn"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kbr8h"]
 
 [sub_resource type="MeshTexture" id="MeshTexture_wax2q"]
 
@@ -11,7 +11,7 @@ motion_mode = 1
 script = ExtResource("1_rjq6v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_qrcnn")
+shape = SubResource("BoxShape3D_kbr8h")
 
 [node name="RayForward" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

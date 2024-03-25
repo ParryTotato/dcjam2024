@@ -7,11 +7,15 @@ var inst_move_speed = 2.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#$RayForward.cast_to = Vector3(1,0,0)
+	#$RayBackward.cast_to = Vector3(-1,0,0)
+	#$RayLeft.cast_to = Vector3(0,0,1)
+	#$RayRight.cast_to = Vector3(0,0,-1)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if game.state == State.EXPLORE:
 		turn()
 		move()

@@ -9,8 +9,8 @@ var deltaG : float
 var instantTurn := false
 var instantMove := false
 
-var turnSpeed := 10
-var moveSpeed := 10
+var globalTurnSpeed := 10
+var globalMoveSpeed := 10
 
 const MAPCAM_HEIGHT = 20
 
@@ -72,7 +72,7 @@ func instTurn():
 	playerCam.rotation.y = player.rotation.y
 	
 func smoothTurn():
-	var turnSpeed = deltaG * turnSpeed
+	var turnSpeed = deltaG * globalTurnSpeed
 	playerCam.rotation.y = lerp_angle(playerCam.rotation.y, player.rotation.y, turnSpeed)
 	
 func moveCam():
@@ -89,5 +89,5 @@ func instMove():
 	playerCam.position = player.position
 	
 func smoothMove():
-	var moveSpeed = deltaG * moveSpeed
+	var moveSpeed = deltaG * globalMoveSpeed
 	playerCam.position = playerCam.position.lerp(player.position, moveSpeed)
