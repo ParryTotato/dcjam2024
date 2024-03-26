@@ -23,6 +23,9 @@ enum State {
 }
 var state : State = State.EXPLORE
 
+var Enemy := preload("res://Scenes/Enemy.tscn")
+var enemy : AnimatedSprite2D
+
 #enum Turn {
 	#PLAYER,
 	#ENEMY,
@@ -41,7 +44,6 @@ func _process(delta : float):
 	turnCam()
 	moveCam()
 	
-	pass
 
 
 
@@ -52,20 +54,19 @@ func restart():
 	#turn = Turn.PLAYER
 	
 func createNewLevel():
-	#level = Level.instantiate()
-	
 	var startPos = level.startTile.position
 	player.position = startPos
 	player.rotation.y = (3*PI)/2
 	playerCam.transform = player.transform
+	spawnEnemies()
 
+func spawnEnemies():
+	enemy = Enemy.instantiate()
+	enemy.position = Vector2(370, 840)
 
 
 
 func turnCam():
-	#if get_parent().instantTurn:
-		#instTurn()
-	#else:
 		smoothTurn()
 		
 func instTurn():
@@ -76,13 +77,7 @@ func smoothTurn():
 	playerCam.rotation.y = lerp_angle(playerCam.rotation.y, player.rotation.y, turnSpeed)
 	
 func moveCam():
-	#if get_parent().instantMove:
-		#instMove()
-	#else:
 		smoothMove()
-	
-	#%MapCam.position = playerCam.position
-	#%MapCam.position.y = MAPCAM_HEIGHT
 	
 
 func instMove():

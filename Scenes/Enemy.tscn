@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://h1gras1h1o5u"]
+
+[ext_resource type="SpriteFrames" uid="uid://jj67rsbk3iv5" path="res://Assets/enemies/Enemies_Sprite_Frame.tres" id="1_ut56y"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="2_g8mqn"]
+
+[node name="Enemy" type="AnimatedSprite3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 0, 0, 0, 0)
+sprite_frames = ExtResource("1_ut56y")
+animation = &"Frog"
+frame_progress = 0.886935
+script = ExtResource("2_g8mqn")
