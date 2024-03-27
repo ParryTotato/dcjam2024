@@ -69,7 +69,5 @@ fov = 100.0
 [node name="Sprite3D" type="Sprite3D" parent="GameObject/MarginContainer/GameContainer/GameViewport/PlayerCam"]
 texture = SubResource("MeshTexture_oba7u")
 
-[node name="Spawning Object" type="Node2D" parent="."]
-
-[node name="Tile Array Object" type="Node2D" parent="."]
+[node name="Procedural Generation" type="Node2D" parent="."]
 script = ExtResource("6_r3dms")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5bg4fgya03lg"]
+[gd_scene load_steps=11 format=3 uid="uid://b5bg4fgya03lg"]
 
 [ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="1_u62gk"]
 [ext_resource type="Texture2D" uid="uid://bg8y3xhdcdy5i" path="res://assets/UI_Assets/Sprite_Menu_Background.jpg" id="2_ddv6j"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cs1hjxeiosllm" path="res://assets/UI_Assets/Sprite_Button_Options_Hovered.png" id="8_s426i"]
 [ext_resource type="Texture2D" uid="uid://dgy5hulhetr58" path="res://assets/UI_Assets/Sprite_Button_Quit.png" id="9_oupsm"]
 [ext_resource type="Texture2D" uid="uid://cehiqf3650kj0" path="res://assets/UI_Assets/Sprite_Button_Quit_Hovered.png" id="10_ucdmf"]
-[ext_resource type="Script" path="res://Scripts/Level Generation/Tile Array.gd" id="11_pu0ja"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -86,7 +85,6 @@ texture_normal = ExtResource("9_oupsm")
 texture_hover = ExtResource("10_ucdmf")
 
 [node name="Rhenium\'s Debugger" type="Node2D" parent="."]
-script = ExtResource("11_pu0ja")
 
 [connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Button_NewGame" to="." method="_on_button_new_game_pressed"]
 [connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Button_ExtractedHeroes" to="." method="_on_button_extracted_heroes_pressed"]

@@ -121,19 +121,10 @@ func generate_tile_array(numRooms,lockEntrance = false):
 		# That means these will have to be updated if the room size stops being 11x11
 		# N entrance is located at index 5, E entrance is located at index 65
 		# S entrance is located at index 115, W entrance is located at index 55
-		while tempRoom[5] == "W" && k.has("N"):
+		while (tempRoom[5] == "W" && k.has("N")) || (tempRoom[65] == "W" && k.has("E")) || (tempRoom[115] == "W" && k.has("S")) || (tempRoom[55] == "W" && k.has("W")):
 			# Entrance does NOT line up, rotate map.
 			tempRoom = rotate_map(tempRoom,roomSize);
-		while tempRoom[65] == "W" && k.has("E"):
-			# Entrance does NOT line up, rotate map.
-			tempRoom = rotate_map(tempRoom,roomSize);
-		while tempRoom[115] == "W" && k.has("S"):
-			# Entrance does NOT line up, rotate map.
-			tempRoom = rotate_map(tempRoom,roomSize);
-		while tempRoom[55] == "W" && k.has("W"):
-			# Entrance does NOT line up, rotate map.
-			tempRoom = rotate_map(tempRoom,roomSize);
-		# Theoretically, doing multiple rounds of rotations could rotate them back out of position
+		# Theoretically, this could lead to an infinite loop
 		# However, we already guaranteed that the rooms will match the correct pattern
 		# If any of the rooms do NOT have entrances in the right place, this will break!
 		# Make sure there are no accidental blank rooms or misplaced entrances
@@ -168,9 +159,9 @@ func generate_tile_array(numRooms,lockEntrance = false):
 		count += 1; # Not to be confused with count2, which is only used in the sub-loop
 		
 	# Debugger that prints out the tiles for the whole floor in a somewhat readable format
-	# for k in tileArr:
-	# # Print each line to console separately
-	# print(str(k));
+	for k in tileArr:
+		# Print each line to console separately
+		print(str(k));
 	
 	# Final return line
 	return tileArr;
@@ -377,7 +368,6 @@ func level_map():
 					"W",".",".",".",".",".",".",".",".",".","W",
 					"W","W","W","W","W",".","W","W","W","W","W"],
 					
-					# Last room of this category; no comma
 				   ["W","W","W","W","W","W","W","W","W","W","W",
 					"W",".",".",".","W",".","W",".",".",".","W",
 					"W",".",".",".",".",".",".",".",".",".","W",
@@ -388,7 +378,56 @@ func level_map():
 					"W",".",".",".",".",".",".",".",".",".","W",
 					"W",".",".",".",".",".",".",".",".",".","W",
 					"W","W","W",".",".",".",".",".","W","W","W",
-					"W","W","W","W","W",".","W","W","W","W","W"]
+					"W","W","W","W","W",".","W","W","W","W","W"],
+					
+				   ["W","W","W","W","W",".","W","W","W","W","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W","W","W","W",".",".","W",".",".",".","W",
+					"W",".",".",".",".",".","W",".",".",".","W",
+					".",".",".",".",".",".","W","W","W","W","W",
+					"W",".",".",".",".",".","W",".",".","W","W",
+					"W","W",".",".","W","W","W",".",".","W","W",
+					"W","W",".",".",".",".",".",".",".","W","W",
+					"W","W",".",".",".",".",".",".",".","W","W",
+					"W","W","W","W","W",".","W","W","W","W","W"],
+					
+				   ["W","W","W","W","W",".","W","W","W","W","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W",".",".","W",".",".",".","W",".",".","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					".",".",".",".",".",".",".",".",".",".","W",
+					"W",".",".",".","W","W","W","W","W","W","W",
+					"W",".",".",".","W",".",".",".","W","W","W",
+					"W",".",".",".",".",".",".",".","W","W","W",
+					"W","W","W","W","W",".",".",".","W","W","W",
+					"W","W","W","W","W",".","W","W","W","W","W"],
+					
+				   ["W","W","W","W","W",".","W","W","W","W","W",
+					"W","W","W",".",".",".",".",".","W","W","W",
+					"W","W",".",".",".",".",".",".",".","W","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					".",".",".",".",".",".",".",".",".",".",".",
+					"W","W",".",".",".",".",".",".",".","W","W",
+					"W","W","W","W","W",".","W","W","W","W","W",
+					"W","W","W",".",".",".",".",".","W","W","W",
+					"W","W","W",".",".",".",".",".","W","W","W",
+					"W","W","W","W","W","W","W","W","W","W","W"],
+					
+					# Last room of this category; no comma
+				   ["W","W","W","W","W",".","W","W","W","W","W",
+					"W","W","W","W","W",".","W",".",".",".","W",
+					"W",".",".",".",".",".","W",".",".",".","W",
+					"W",".",".",".",".",".","W","W","W",".","W",
+					"W",".",".",".",".",".",".","W","W",".","W",
+					".",".",".",".",".","W",".","W",".",".",".",
+					"W","W","W","W","W","W",".",".",".","W","W",
+					"W",".",".",".",".","W","W","W",".","W","W",
+					"W",".",".","W",".","W","W","W",".","W","W",
+					"W",".",".","W",".",".",".",".",".","W","W",
+					"W","W","W","W","W","W","W","W","W","W","W"]
 					
 					]; # End bracket
 					
@@ -408,7 +447,6 @@ func level_map():
 					"W","W",".",".",".",".","W","W","W","W","W",
 					"W","W","W","W","W",".","W","W","W","W","W"],
 					
-					# Last room of this category; no comma
 				   ["W","W","W","W","W",".","W","W","W","W","W",
 					"W",".",".",".",".",".",".",".",".",".","W",
 					"W",".",".",".",".",".",".",".",".",".","W",
@@ -419,6 +457,19 @@ func level_map():
 					"W",".",".","W","W",".","W","W",".",".","W",
 					"W",".",".",".",".",".",".",".",".",".","W",
 					"W",".",".",".",".",".",".",".",".",".","W",
+					"W","W","W","W","W",".","W","W","W","W","W"],
+					
+					# Last room of this category; no comma
+				   ["W","W","W","W","W",".","W","W","W","W","W",
+					"W",".",".",".","W",".","W",".",".","W","W",
+					"W",".",".",".",".",".","W",".",".",".","W",
+					"W",".",".",".","W",".","W",".",".",".","W",
+					"W",".",".",".","W",".",".",".",".",".","W",
+					"W","W",".","W","W","W","W",".",".",".","W",
+					"W","W",".","W","W","W","W","W","W","W","W",
+					"W","W",".","W",".",".",".",".",".","W","W",
+					"W","W",".",".",".",".",".",".",".","W","W",
+					"W","W","W","W",".",".",".",".",".","W","W",
 					"W","W","W","W","W",".","W","W","W","W","W"]
 					
 					]; # End bracket
@@ -439,7 +490,6 @@ func level_map():
 					"W","W","W","W","W",".","W","W","W","W","W",
 					"W","W","W","W","W",".","W","W","W","W","W"],
 					
-					# Last room of this category; no comma
 				   ["W","W","W","W","W",".","W","W","W","W","W",
 					"W","W",".",".",".",".","W",".",".",".","W",
 					"W","W",".","W","W","W","W",".",".",".","W",
@@ -450,6 +500,43 @@ func level_map():
 					"W",".",".",".",".",".","W","W",".","W","W",
 					"W",".",".",".",".",".",".",".",".","W","W",
 					"W",".",".",".",".",".","W","W","W","W","W",
+					"W","W","W","W","W","W","W","W","W","W","W"],
+					
+				   ["W","W","W","W","W","W","W","W","W","W","W",
+					"W",".",".",".",".",".",".",".","W","W","W",
+					"W",".",".",".","W","W","W",".","W","W","W",
+					"W",".",".",".","W",".",".",".",".","W","W",
+					"W","W","W","W","W",".",".",".",".","W","W",
+					".",".",".",".",".",".",".",".",".","W","W",
+					"W","W",".","W","W","W","W","W","W","W","W",
+					"W","W",".","W","W","W","W",".",".",".","W",
+					"W","W",".",".",".",".",".",".",".",".","W",
+					"W","W","W","W","W",".","W",".",".",".","W",
+					"W","W","W","W","W",".","W","W","W","W","W"],
+					
+				   ["W","W","W","W","W",".","W","W","W","W","W",
+					"W",".",".",".","W",".","W",".",".",".","W",
+					"W",".",".",".",".",".","W",".",".",".","W",
+					"W",".",".",".","W",".","W",".",".",".","W",
+					"W","W",".","W","W",".",".",".",".",".","W",
+					".",".",".","W","W","W","W",".",".",".","W",
+					"W","W",".","W","W","W","W","W",".","W","W",
+					"W",".",".",".","W",".",".",".",".",".","W",
+					"W",".",".",".","W",".",".",".",".",".","W",
+					"W",".",".",".","W",".",".",".",".",".","W",
+					"W","W","W","W","W","W","W","W","W","W","W"],
+					
+					# Last room of this category; no comma
+				   ["W","W","W","W","W",".","W","W","W","W","W",
+					"W",".",".","W",".",".",".","W","W","W","W",
+					"W",".",".","W",".",".",".","W","W","W","W",
+					"W",".",".",".",".",".",".","W","W","W","W",
+					"W",".",".","W",".",".",".",".",".",".","W",
+					"W",".",".","W",".",".",".",".",".",".",".",
+					"W",".",".","W",".",".",".",".",".",".","W",
+					"W",".",".","W","W","W","W",".","W","W","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
 					"W","W","W","W","W","W","W","W","W","W","W"]
 					
 					]; # End bracket
@@ -470,7 +557,6 @@ func level_map():
 					"W","W",".",".",".",".",".",".",".","W","W",
 					"W","W","W","W","W",".","W","W","W","W","W"],
 					
-					# Last room of this category; no comma
 				   ["W","W","W","W","W",".","W","W","W","W","W",
 					"W","W","W",".",".",".",".",".","W","W","W",
 					"W",".",".",".",".",".",".",".",".",".","W",
@@ -481,6 +567,43 @@ func level_map():
 					"W",".",".",".",".",".",".",".",".",".","W",
 					"W","W","W",".",".",".",".",".","W","W","W",
 					"W","W","W","W",".",".",".","W","W","W","W",
+					"W","W","W","W","W","W","W","W","W","W","W"],
+					
+				   ["W","W","W","W","W",".","W","W","W","W","W",
+					"W","W","W","W","W",".","W","W","W","W","W",
+					"W","W","W","W","W",".","W","W","W","W","W",
+					"W",".",".",".",".",".","W","W","W","W","W",
+					"W",".",".",".",".",".","W","W","W","W","W",
+					"W",".",".","W","W","W","W","W","W","W","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W",".",".","W",".",".","W",".",".","W","W",
+					"W",".",".","W",".",".","W",".",".","W","W",
+					"W","W","W","W","W","W","W","W","W","W","W"],
+					
+				   ["W","W","W","W","W",".","W","W","W","W","W",
+					"W","W","W",".",".",".",".",".",".",".","W",
+					"W","W","W",".","W","W","W","W","W",".","W",
+					"W","W","W",".",".",".",".","W","W",".","W",
+					"W","W","W","W","W","W",".","W","W",".","W",
+					"W",".",".",".",".",".",".","W","W",".","W",
+					"W",".","W","W","W","W","W","W","W",".","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W","W","W","W",".",".",".",".",".",".","W",
+					"W",".",".",".",".",".",".",".",".",".","W",
+					"W","W","W","W","W","W","W","W","W","W","W"],
+					
+					# Last room of this category; no comma
+				   ["W","W","W","W","W","W","W","W","W","W","W",
+					"W","W","W","W","W",".",".",".",".",".","W",
+					"W","W","W","W","W",".",".",".",".",".","W",
+					"W","W","W","W","W",".",".",".",".",".","W",
+					"W","W","W","W","W","W","W","W",".","W","W",
+					"W","W","W","W","W","W","W",".",".",".",".",
+					"W","W","W","W","W","W","W",".",".",".","W",
+					"W","W","W","W","W","W","W",".",".",".","W",
+					"W","W","W","W","W","W","W","W","W","W","W",
+					"W","W","W","W","W","W","W","W","W","W","W",
 					"W","W","W","W","W","W","W","W","W","W","W"]
 					
 					]; # End bracket
@@ -575,7 +698,50 @@ func spawn_tiles(tileArr):
 	# I know for a fact that the tile array itself is fine
 	# And it's not even being used yet anyway, I'll add the loop once I get this to work
 	
-	var loaded_scene = preload("res://Scenes/tiles.tscn");
-	var tiles_object = loaded_scene.instance();
-	tiles_object.position = Vector2(0,0);
-	add_child(tiles_object);
+	# Starting position. Put whatever you want here
+	var startX = 20;
+	var startY = 20; # I picked (20,20) as the start just so it wouldn't overlap the test level
+	# Positioning
+	var X = startX;
+	var Y = startY;
+	# Convenience constants
+	var tilesPerMove = 4; # Should match player's movement
+	var wallHeight = 2;
+	# These variable names are kind of a misnomer because they're for a top-down roguelike-style grid
+	# Y is actually Z technically, since we don't have elevation mechanics
+	var x_increment = tilesPerMove;
+	var y_increment = tilesPerMove;
+	
+	#Actual loop here
+	for i in range(tileArr.size()):
+		# Get the current array at the current index
+		var tempArr = tileArr[i];
+		# Print current tile out to console
+		for k in range(tempArr.size()):
+			# Get current tile
+			var tileType = tempArr[k];
+			# Determine whether it's a floor or wall tile
+			var tile = null;
+			# Glass told me to only spawn in the walls, presumably we're just going to put floors everywhere
+			if tileType == "W":
+				# Create a square lattice, the specified number of blocks high
+				# This is actually pretty lag-inducing, but whatever, it works
+				# If someone makes a bigger 4x4x2 wall object, these loops can be safely removed
+				# I do know about the scale property, and changing that to (4,4,2) works, but...
+				# ... it leads to weird camera jank where certain object edges suddenly render/unrender
+				for z in tilesPerMove:
+					for y in tilesPerMove:
+						for j in wallHeight:
+							# j will go 0 -> 1
+							var loaded_scene = preload("res://Scenes/tiles.tscn");
+							var tiles_object = loaded_scene.instantiate();
+							tiles_object.position = Vector3(X + z,0 + j,Y + y);
+							add_child(tiles_object);
+			# Increment X
+			X += x_increment;
+		# Increment Y
+		Y += y_increment;
+		# Reset X
+		X = startX;
+	
+	
