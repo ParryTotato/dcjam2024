@@ -25,7 +25,7 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("2_llooc")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 0, 0, 2, 0)
-animation = &"Bat"
+billboard = 1
 frame_progress = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
