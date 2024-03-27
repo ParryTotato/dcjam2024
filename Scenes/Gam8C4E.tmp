@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://y0qukb6aqsbb"]
+[gd_scene load_steps=8 format=3 uid="uid://y0qukb6aqsbb"]
 
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_n245a"]
 [ext_resource type="PackedScene" uid="uid://cd2xs7liqxnj8" path="res://Scenes/Player.tscn" id="2_343qo"]
 [ext_resource type="PackedScene" uid="uid://cq8y3222s13ux" path="res://Scenes/movement_test.tscn" id="3_1i62w"]
 [ext_resource type="PackedScene" uid="uid://bx6n8a1hq2nik" path="res://Scenes/Level.tscn" id="3_fg4jn"]
+[ext_resource type="Script" path="res://Scripts/Level Generation/Spawning.gd" id="5_bu35o"]
 [ext_resource type="Script" path="res://Scripts/Level Generation/Tile Array.gd" id="6_r3dms"]
 
 [sub_resource type="MeshTexture" id="MeshTexture_oba7u"]
@@ -70,6 +71,7 @@ fov = 100.0
 texture = SubResource("MeshTexture_oba7u")
 
 [node name="Spawning Object" type="Node2D" parent="."]
+script = ExtResource("5_bu35o")
 
 [node name="Tile Array Object" type="Node2D" parent="."]
 script = ExtResource("6_r3dms")

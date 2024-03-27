@@ -7,7 +7,12 @@ func _ready():
 	# It also does not denote where the level exit/stairs down should be located
 	# However, all floor tiles are guaranteed to be contiguous, so you can just pick one of those at random
 	# This function uses "W" to denote a wall tile and "." to denote a floor tile.
-	generate_tile_array(5);
+	
+	# Does not actually do anything on its own, but the spawning object will call functions from here
+	var tileArr = generate_tile_array(5);
+	spawn_tiles(tileArr);
+	
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -163,9 +168,9 @@ func generate_tile_array(numRooms,lockEntrance = false):
 		count += 1; # Not to be confused with count2, which is only used in the sub-loop
 		
 	# Debugger that prints out the tiles for the whole floor in a somewhat readable format
-	for k in tileArr:
-		# Print each line to console separately
-		print(str(k));
+	# for k in tileArr:
+	# # Print each line to console separately
+	# print(str(k));
 	
 	# Final return line
 	return tileArr;
@@ -286,7 +291,7 @@ func level_map():
 	# Feel free to change this to the proper data structure if you actually know what it is
 	var levelMap = [];
 	# Gigantic tower of values. Formatted like this for readability mostly
-	# I used "X" for wall tiles and "." for floor tiles
+	# I used "W" for wall tiles and "." for floor tiles
 	var centerData = [ # Start bracket
 		
 					#Each room is represented by an 11x11 "grid" (actually just a 1D array)
@@ -563,3 +568,14 @@ func index_to_coord(index,width):
 	var Y = floor(index / width);
 	# Return line
 	return [X,Y];
+	
+
+func spawn_tiles(tileArr):
+	
+	# I know for a fact that the tile array itself is fine
+	# And it's not even being used yet anyway, I'll add the loop once I get this to work
+	
+	var loaded_scene = preload("res://Scenes/tiles.tscn");
+	var tiles_object = loaded_scene.instance();
+	tiles_object.position = Vector2(0,0);
+	add_child(tiles_object);

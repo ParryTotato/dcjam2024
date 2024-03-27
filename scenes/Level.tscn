@@ -1,6 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://do8obmhxtbv7m"]
-
-[ext_resource type="Texture2D" uid="uid://yse3jughrmqw" path="res://assets/wood_floor.jpg" id="1_1ggug"]
+[gd_scene load_steps=3 format=3 uid="uid://bx6n8a1hq2nik"]
 
 [sub_resource type="Sky" id="Sky_wxaqg"]
 
@@ -15,6 +13,5 @@ environment = SubResource("Environment_8ae2g")
 
 [node name="Floor" type="Sprite3D" parent="."]
 axis = 1
-texture = ExtResource("1_1ggug")
 region_enabled = true
 region_rect = Rect2(0, 0, 8000, 8000)
