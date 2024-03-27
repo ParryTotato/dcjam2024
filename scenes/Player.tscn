@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd2xs7liqxnj8"]
+[gd_scene load_steps=5 format=3 uid="uid://cd2xs7liqxnj8"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_rjq6v"]
+[ext_resource type="PackedScene" uid="uid://ces26sv5h6e0d" path="res://Scenes/HealthBar.tscn" id="2_r8fiv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kbr8h"]
 
@@ -39,3 +40,7 @@ fov = 100.0
 
 [node name="Sprite3D" type="Sprite3D" parent="PlayerCam"]
 texture = SubResource("MeshTexture_wax2q")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("2_r8fiv")]

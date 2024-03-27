@@ -3,6 +3,7 @@ extends Control
 
 @onready var player : CharacterBody3D = $Player
 @onready var playerCam : Camera3D = get_node("%PlayerCam")
+@onready var healthbar = get_node("Player/CanvasLayer/Healthbar")
 
 var deltaG : float
 
@@ -12,12 +13,16 @@ var instantMove := false
 var globalTurnSpeed := 10
 var globalMoveSpeed := 10
 
+
+var health
+var is_alive
+
 const MAPCAM_HEIGHT = 20
 
 enum State {
-	EXPLORE,
-	COMBAT,
-	EXTRACTING
+    EXPLORE,
+    COMBAT,
+    EXTRACTING
 }
 var state : State = State.EXPLORE
 
@@ -25,67 +30,80 @@ var Enemy := preload("res://Scenes/Enemy.tscn")
 var enemy : AnimatedSprite3D
 
 enum Turn {
-	PLAYER,
-	ENEMY,
-	DELAY
+    PLAYER,
+    ENEMY,
+    DELAY
 }
 var turn : Turn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("hi")
-	await get_tree().root.ready
+    print("hi")
+    health = 100
+    print (health)
+    healthbar.init_health(health)
+    await get_tree().root.ready
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta : float):
-	deltaG = delta
-	
-	turnCam()
-	moveCam()
-	
-	var curTile = player.getPosition()
-	
-	if state == State.EXPLORE:
-		startCombat()
+    deltaG = delta
+    
+    turnCam()
+    moveCam()
+    
+    var curTile = player.getPosition()
+    
+    if state == State.EXPLORE:
+        startCombat()
 
 func restart():
-	createNewLevel()
-	
-	state = State.EXPLORE
-	turn = Turn.PLAYER
-	
+    createNewLevel()
+    
+    state = State.EXPLORE
+    turn = Turn.PLAYER
+    
 func createNewLevel():
-	#var startPos = level.startTile.position
-	#player.position = startPos
-	player.rotation.y = (3*PI)/2
-	playerCam.transform = player.transform
-	spawnEnemies()
+    #var startPos = level.startTile.position
+    #player.position = startPos
+    player.rotation.y = (3*PI)/2
+    playerCam.transform = player.transform
+    spawnEnemies()
 
 func spawnEnemies():
-	enemy = Enemy.instantiate()
-	#enemy.position = Vector2(370, 840)
+    enemy = Enemy.instantiate()
+    #enemy.position = Vector2(370, 840)
 
 func startCombat():
-	pass
+    pass
 
 
 func turnCam():
-		smoothTurn()
-		
+        smoothTurn()
+        
 func instTurn():
-	playerCam.rotation.y = player.rotation.y
-	
+    playerCam.rotation.y = player.rotation.y
+    
 func smoothTurn():
-	var turnSpeed = deltaG * globalTurnSpeed
-	playerCam.rotation.y = lerp_angle(playerCam.rotation.y, player.rotation.y, turnSpeed)
-	
+    var turnSpeed = deltaG * globalTurnSpeed
+    playerCam.rotation.y = lerp_angle(playerCam.rotation.y, player.rotation.y, turnSpeed)
+    
 func moveCam():
-		smoothMove()
-	
+        smoothMove()
+    
 
 func instMove():
-	playerCam.position = player.position
-	
+    playerCam.position = player.position
+    
 func smoothMove():
-	var moveSpeed = deltaG * globalMoveSpeed
-	playerCam.position = playerCam.position.lerp(player.position, moveSpeed)
+    var moveSpeed = deltaG * globalMoveSpeed
+    playerCam.position = playerCam.position.lerp(player.position, moveSpeed)
+
+func _set_health(value):
+    _set_health(value)
+    if health <= 0 && is_alive:
+        _die()
+        
+        healthbar.health = health
+        
+func _die():
+    pass

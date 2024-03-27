@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=19 format=3 uid="uid://jj67rsbk3iv5"]
 
-[ext_resource type="Texture2D" uid="uid://d1ck6haitc57k" path="res://Assets/enemies/Enemy_Bat.png" id="1_fu4ep"]
-[ext_resource type="Texture2D" uid="uid://bcoqdyqikxgno" path="res://Assets/enemies/Enemy_Frog.png" id="2_3g0vb"]
+[ext_resource type="Texture2D" uid="uid://dxg76u5olhqtw" path="res://assets/Enemies/Enemy_Bat.png" id="1_fu4ep"]
+[ext_resource type="Texture2D" uid="uid://bmd2j5r1c0uej" path="res://assets/Enemies/Enemy_Frog.png" id="2_3g0vb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akvtd"]
 atlas = ExtResource("1_fu4ep")
