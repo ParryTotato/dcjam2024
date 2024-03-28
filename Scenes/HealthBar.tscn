@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ces26sv5h6e0d"]
 
-[ext_resource type="Texture2D" uid="uid://dbesejwlbhv6c" path="res://assets/UI_Assets/Hud_Healthbar_Empty.png" id="1_2fkiw"]
-[ext_resource type="Texture2D" uid="uid://cke57bc7wygo6" path="res://assets/UI_Assets/Hud_Healthbar_Full.png" id="2_omgp5"]
-[ext_resource type="Script" path="res://Scenes/HealthBar.gd" id="3_22ygy"]
-[ext_resource type="Texture2D" uid="uid://wnw8p74f3kmq" path="res://assets/UI_Assets/Hud_Healthbar_Toplayer.png" id="4_4uego"]
-[ext_resource type="Texture2D" uid="uid://hx604btchyaq" path="res://assets/UI_Assets/Hud_HealthIcon.png" id="5_4njq6"]
+[ext_resource type="Texture2D" uid="uid://os33w50poynp" path="res://Assets/UI_Assets/Hud_Healthbar_Empty.png" id="1_2fkiw"]
+[ext_resource type="Texture2D" uid="uid://bxtfnncrcej2s" path="res://Assets/UI_Assets/Hud_Healthbar_Full.png" id="2_omgp5"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="3_22ygy"]
+[ext_resource type="Texture2D" uid="uid://syrhok1fpb0s" path="res://Assets/UI_Assets/Hud_Healthbar_Toplayer.png" id="4_4uego"]
+[ext_resource type="Texture2D" uid="uid://c8y676pbbmhii" path="res://Assets/UI_Assets/Hud_HealthIcon.png" id="5_4njq6"]
 
 [node name="HealthBar" type="TextureProgressBar"]
 offset_left = 124.0

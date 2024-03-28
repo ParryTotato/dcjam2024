@@ -1,0 +1,71 @@
+extends CharacterBody3D
+
+@onready var game = get_parent()
+@onready var State = game.State
+
+var inst_move_speed = 2.5
+var strength = 2
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if game.state == State.EXPLORE:
+		turn()
+		move()
+
+func turn():
+	if Input.is_action_just_pressed("turn_left"):
+		rotation.y += PI/2
+	if Input.is_action_just_pressed("turn_right"):
+		rotation.y -= PI/2
+	
+	if rotation.y < 0:
+		rotation.y += PI * 2
+	elif rotation.y >= PI * 2:
+		rotation.y -= PI * 2
+	
+	rotation.y = snapped(rotation.y, PI/2)
+	
+
+func move():
+	var movement := Vector3.ZERO
+	if Input.is_action_just_pressed("move_forward") && !$RayForward.is_colliding():
+		movement = calc_forw_move()
+	
+	if Input.is_action_just_pressed("move_backward") && !$RayBackward.is_colliding():
+		movement = calc_forw_move()
+		movement.z = -movement.z
+		movement.x = -movement.x
+	
+	if Input.is_action_just_pressed("move_left") && !$RayLeft.is_colliding():
+		movement = calc_forw_move()
+		var temp = movement.x
+		movement.x = movement.z
+		movement.z = -temp
+	
+	if Input.is_action_just_pressed("move_right") && !$RayRight.is_colliding():
+		movement = calc_forw_move()
+		var temp = movement.x
+		movement.x = -movement.z
+		movement.z = temp
+	
+	move_and_collide(movement)
+	position = snapped(position, Vector3(4,2,4))
+
+
+func calc_forw_move() -> Vector3:
+	if is_zero_approx(rotation.y):
+		return Vector3(0,0,(-1*inst_move_speed))
+	elif is_equal_approx(rotation.y, PI/2):
+		return Vector3((-1*inst_move_speed),0,0)
+	elif is_equal_approx(rotation.y, PI):
+		return Vector3(0,0,inst_move_speed)
+	elif is_equal_approx(rotation.y, (3*PI)/2):
+		return Vector3(inst_move_speed,0,0)
+	
+	return Vector3.ZERO
+

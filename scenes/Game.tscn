@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://y0qukb6aqsbb"]
+[gd_scene load_steps=6 format=3 uid="uid://y0qukb6aqsbb"]
 
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_n245a"]
 [ext_resource type="PackedScene" uid="uid://cd2xs7liqxnj8" path="res://Scenes/Player.tscn" id="2_343qo"]
 [ext_resource type="PackedScene" uid="uid://cq8y3222s13ux" path="res://Scenes/movement_test.tscn" id="3_1i62w"]
-[ext_resource type="PackedScene" uid="uid://do8obmhxtbv7m" path="res://Scenes/Level.tscn" id="3_fg4jn"]
-[ext_resource type="Script" path="res://Scripts/Combat.gd" id="5_svpp5"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="3_jem2o"]
 
 [sub_resource type="MeshTexture" id="MeshTexture_oba7u"]
 
@@ -23,15 +22,9 @@ script = ExtResource("1_n245a")
 [node name="Player" parent="." instance=ExtResource("2_343qo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 motion_mode = 0
+script = ExtResource("3_jem2o")
 
 [node name="Movement_Test" parent="." instance=ExtResource("3_1i62w")]
-
-[node name="Level2" parent="." instance=ExtResource("3_fg4jn")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 50, 0, 0)
-visible = false
-
-[node name="Level" parent="." instance=ExtResource("3_fg4jn")]
-visible = false
 
 [node name="GameObject" type="Control" parent="."]
 layout_mode = 1
@@ -80,4 +73,3 @@ handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(2688, 1512)
 render_target_update_mode = 4
-script = ExtResource("5_svpp5")
