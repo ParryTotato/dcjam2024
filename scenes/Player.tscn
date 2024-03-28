@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd2xs7liqxnj8"]
+[gd_scene load_steps=7 format=3 uid="uid://cd2xs7liqxnj8"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_rjq6v"]
 [ext_resource type="PackedScene" uid="uid://ces26sv5h6e0d" path="res://Scenes/HealthBar.tscn" id="2_r8fiv"]
+[ext_resource type="PackedScene" uid="uid://dd5jrnkbh8hn0" path="res://Scenes/EXP Bar.tscn" id="3_f87h1"]
+[ext_resource type="PackedScene" uid="uid://xp06y6x0fh4e" path="res://Scenes/Hotbar.tscn" id="3_vo7w3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kbr8h"]
 
@@ -44,3 +46,11 @@ texture = SubResource("MeshTexture_wax2q")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Healthbar" parent="CanvasLayer" instance=ExtResource("2_r8fiv")]
+
+[node name="ExpBar" parent="CanvasLayer" instance=ExtResource("3_f87h1")]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
+
+[node name="Hotbar" parent="CanvasLayer" instance=ExtResource("3_vo7w3")]

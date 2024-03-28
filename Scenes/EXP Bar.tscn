@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd5jrnkbh8hn0"]
+
+[ext_resource type="Texture2D" path="res://assets/UI_Assets/Hud_EXPbar_Empty.png" id="1_pqb4r"]
+[ext_resource type="Texture2D" path="res://assets/UI_Assets/Hud_EXPbar_Full.png" id="2_164mw"]
+
+[node name="ExpBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.000588166
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -248.093
+offset_top = -206.0
+offset_right = 247.907
+offset_bottom = -158.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 50.0
+texture_under = ExtResource("1_pqb4r")
+texture_progress = ExtResource("2_164mw")
